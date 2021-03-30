@@ -8,7 +8,7 @@ export default function TodoList(props) {
         <ListGroup.Item
           as="li"
           action variant={item.variant}
-          className={`complete-${item.complete.toString()}`}
+          // className={`complete-${item.complete.toString()}`}
           key={item._id}
         >
           <span onClick={() => props.handleComplete(item._id)}>

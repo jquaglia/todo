@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
+import axios from 'axios';
 
 import './todo.scss';
+
+const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 export default function ToDo() {
 
@@ -19,6 +22,22 @@ export default function ToDo() {
     setList([...list, item]);
   };
 
+  const _axiosAddItem = async (item) => {
+    
+  }
+
+  const _axiosGetItems = async (item) => {
+    const request = await axios({
+      method: 'get',
+      url: todoAPI,
+    });
+    // console.log(request);
+    const results = request.data.results;
+    setList(results);
+  };
+
+  useEffect(_axiosGetItems, []);
+
   const toggleComplete = id => {
 
     let item = list.filter(i => i._id === id)[0] || {};
@@ -29,24 +48,25 @@ export default function ToDo() {
       } else if (item.variant === 'success') {
         item.variant = 'danger';
       }
+
       item.complete = !item.complete;
       setList(list.map(listItem => listItem._id === item._id ? item : listItem));
     }
 
   };
 
-  const _getTodoItems = () => {
-    let list2 = [
-      { _id: 1, complete: false, variant: 'danger', text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A' },
-      { _id: 2, complete: false, variant: 'danger', text: 'Do the Laundry', difficulty: 2, assignee: 'Person A' },
-      { _id: 3, complete: false, variant: 'danger', text: 'Walk the Dog', difficulty: 4, assignee: 'Person B' },
-      { _id: 4, complete: true, variant: 'success', text: 'Do Homework', difficulty: 3, assignee: 'Person C' },
-      { _id: 5, complete: false, variant: 'danger', text: 'Take a Nap', difficulty: 1, assignee: 'Person B' },
-    ];
-    setList(list2);
-  };
+  // const _getTodoItems = () => {
+  //   let list2 = [
+  //     { _id: 1, complete: false, variant: 'danger', text: 'Clean the Kitchen', difficulty: 3, assignee: 'Person A' },
+  //     { _id: 2, complete: false, variant: 'danger', text: 'Do the Laundry', difficulty: 2, assignee: 'Person A' },
+  //     { _id: 3, complete: false, variant: 'danger', text: 'Walk the Dog', difficulty: 4, assignee: 'Person B' },
+  //     { _id: 4, complete: true, variant: 'success', text: 'Do Homework', difficulty: 3, assignee: 'Person C' },
+  //     { _id: 5, complete: false, variant: 'danger', text: 'Take a Nap', difficulty: 1, assignee: 'Person B' },
+  //   ];
+  //   setList(list2);
+  // };
 
-  useEffect(_getTodoItems, []);
+  // useEffect(_getTodoItems, []);
 
   return (
     <>
@@ -58,7 +78,7 @@ export default function ToDo() {
         </h2>
         <section className="todo">
           <div>
-            <TodoForm handleSubmit={addItem} />
+            <TodoForm addItem={addItem} />
           </div>
           <div>
             <TodoList
