@@ -1,4 +1,49 @@
-# Getting Started with Create React App
+# LAB - Hooks API
+
+## Author: Jason Quaglia
+
+[Link to PR](https://github.com/jquaglia/todo/pull/2)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f102994b-c7b5-4898-9d7e-cb9ced9e0bed/deploy-status)](https://app.netlify.com/sites/vigorous-poitras-0340ff/deploys)
+
+[Link to Deployed App](https://vigorous-poitras-0340ff.netlify.app/)
+
+## todo Phase 1:
+
+Today, we begin the first of a 4-phase build of the To Do List Manager, a web-based task manager application, written in React. In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
+
+The following user/developer stories detail the major functionality for this phase of the project.
+
+- As a user, I would like an easy way to add a new to do item using an online interface
+
+- As a user, I would like my to do items to have an assignee, due date, difficulty meter, status and the task itself
+
+- As a user, I would like to delete to do items that are no longer needed
+
+- As a user, I would like to easily mark to do items as completed
+
+- As a user, I would like to edit an existing to do item
+
+## Collaborators
+
+- Jason Dormier
+
+- Carly Dekock
+
+- Seid Mohamed
+
+- Nick Magruder
+
+- Bill Moreno
+
+## Resources
+
+- [Bootstrap guide](https://react-bootstrap.github.io/components/alerts/)
+
+UML
+![UML diagram](./assets/UML.png)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
