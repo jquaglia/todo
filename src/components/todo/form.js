@@ -1,18 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Button, Form } from 'react-bootstrap';
 
-// class TodoForm extends React.Component {
 export default function TodoForm(props) {
 
   const [listItem, setList] = useState(['stuff']);
-  // const [show, setShow] = useState(false);
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { item: {} };
-  // }
 
   const handleInputChange = e => {
-
     setList({ item: { ...listItem.item, [e.target.name]: e.target.value } });
   };
   
@@ -22,35 +16,29 @@ export default function TodoForm(props) {
     props.handleSubmit(listItem.item);
     const item = {};
     setList({ item });
-    // console.log('LIST', list);
   };
 
-  // render() {
   return (
     <>
-      <h3>Add Item</h3>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <h3>Add To Do Item</h3>
+      <Form onSubmit={handleSubmit}>
+        <Form.Label>
           <span>To Do Item</span>
-          <input
+          <Form.Control
             name="text"
             placeholder="Add To Do List Item"
             onChange={handleInputChange}
           />
-        </label>
-        <label>
-          <span>Difficulty Rating</span>
-          <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={handleInputChange} />
-        </label>
-        <label>
+        </Form.Label>
+        <Form.Label>
           <span>Assigned To</span>
-          <input type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
-        </label>
-        <button>Add Item</button>
-      </form>
+          <Form.Control type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
+        </Form.Label>
+        <Form.Label>
+          <Form.Control defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={handleInputChange} />
+        </Form.Label>
+        <Button variant="primary" type="submit">Add Item</Button>
+      </Form>
     </>
   );
-  // }
 }
-
-// export default TodoForm;

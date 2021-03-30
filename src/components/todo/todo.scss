@@ -1,94 +1,91 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding:0;
-    width: 100%;
+* {
+    box-sizing: border-box;
 }
-.todo-details {
-    display:flex;
-    flex-direction:column;
 
-    header {
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
-        padding:.5em 1em;
-    }
-
-    .item {
-        flex:1;
-        padding: 1em;
-    }
-
+.list-group-item-success:hover {
+    color: #7D2932 !important;
+    background-color: #F5C6CB !important;
+    border-color: #D39AA0 !important;
 }
+
+.list-group-item-danger:hover {
+    color: #165725 !important;
+    background-color: #B1DFBB !important;
+    border-color: #9BC3A4 !important;
+}
+
+main {
+    width: 960px;
+    margin: auto;
+    section {
+        margin: auto;
+    }
+    h2 {
+        background-color: #343B40;
+        color: #FCFCFC;
+        height: 60px;
+        font-size: x-large;
+        line-height: 60px;
+        padding-left: 15px;
+        margin-top: 25px;
+    }
+}
+
+section div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .todo {
-
-    display:flex;
-    flex-direction:row;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    flex-direction: row;
     justify-content: flex-start;
     margin: 2em;
-
+    div {
+        padding: 20px;
+        h3 {
+            margin-left: 2em;
+        }
+    }
     form {
-
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
         margin-right: 2em;
-
+        margin-left: 2em;
         label {
             display: flex;
-            flex-direction:column;
+            flex-direction: column;
             margin-bottom: 1em;
         }
     }
-
     ul {
-        list-style-type:none;
-        margin:0;
-        padding:0;
-
         li {
-
+            padding: 0;
+            width: 400px;
+            height: 50px;
+            display: flex;
             align-items: center;
-            display:flex;
-            flex-direction:row;
-            font-size: .75em;
-            margin: .75em .5em;
-
+            justify-content: center;
             &.complete-true {
               span {
-                background: pink;
                 text-decoration:line-through;
                 &:hover {
-                   background: seagreen;
+                text-decoration: none;
                 }
               }
             }
-
             span {
-                background: #e0e0e0;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding-left: 20px;
+                width: 100%;
+                height: 100%;
                 cursor:pointer;
-                &:hover {
-                    background: pink;
-                }
             }
-             span, input {
-                 border: .5px solid #eee;
-                 display:inline-block;
-                 padding: .2em .25em;
-                 width: 300px;
-             }
-
-            button {
-                background: transparent;
-                border:none;
-                color:blue;
-                cursor:pointer;
-                padding:0;
-                margin: 0 .75em;
-            }
-
         }
     }
-
 }
