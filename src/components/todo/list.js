@@ -1,21 +1,39 @@
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
+import { Toast, Badge } from 'react-bootstrap';
 
 export default function TodoList(props) {
+
+  const styles = {
+    pill: { cursor: 'pointer' },
+  };
+
   return (
-    <ListGroup as="ul">
+    <>
       {props.list.map(item => (
-        <ListGroup.Item
-          as="li"
-          action variant={item.variant}
-          // className={`complete-${item.complete.toString()}`}
-          key={item._id}
-        >
-          <span onClick={() => props.handleComplete(item._id)}>
+        <Toast key={item._id} onClose={() => props.handleDelete(item._id)}>
+          <Toast.Header>
+
+            <Badge
+              pill
+              style={styles.pill}
+              variant={item.complete ? 'danger' : 'success'}
+              // className={`complete-${item.complete.toString()}`}
+              onClick={() => props.handleComplete(item._id)}
+            // key={item._id}
+            >
+              {!item.complete ? 'Pending' : 'Complete'}
+            </Badge>
+            <strong className="mr-auto">{item.assignee}</strong>
+            {/* <span onClick={() => props.handleComplete(item._id)}> */}
+            {/* {item.text} */}
+            {/* </span> */}
+          </Toast.Header>
+          <Toast.Body>
             {item.text}
-          </span>
-        </ListGroup.Item>
+            difficulty:{item.difficulty}
+          </Toast.Body>
+        </Toast>
       ))}
-    </ListGroup>
+    </>
   );
 }
