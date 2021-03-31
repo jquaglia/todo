@@ -2,7 +2,7 @@
 
 ## Author: Jason Quaglia
 
-[Link to PR](https://github.com/jquaglia/todo/pull/2)
+[Link to PR](https://github.com/jquaglia/todo/pull/3)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f102994b-c7b5-4898-9d7e-cb9ced9e0bed/deploy-status)](https://app.netlify.com/sites/vigorous-poitras-0340ff/deploys)
 
@@ -23,6 +23,16 @@ The following user/developer stories detail the major functionality for this pha
 - As a user, I would like to easily mark to do items as completed
 
 - As a user, I would like to edit an existing to do item
+
+## todo Phase 2:
+
+In Phase 2, we’re going to connect the To Do Manager to a deployed API, backed by a database. The core functionality and stories do not change (reference Phase 1), but a new one has been added to note this shift in persistence.
+
+- As a user, I would like to be able to add, update, and delete To Do items
+
+- As a user, I would like my To Do Items to be permanently stored so that I can re-access them at any time, using any device
+
+Note that the display of each To Do item has changed slightly.
 
 ## Collaborators
 
