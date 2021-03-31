@@ -1,6 +1,25 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// const useAjax2 = () => {
+
+//   const [options, request] = useState([]);
+//   const [response, setResponse] = useState([]);
+
+//   useEffect(() => {
+//     async function ajax() {
+//       const res = await axios(options);
+//       setResponse(res.data);
+//     }
+//     ajax();
+//   }, [options]);
+
+//   // request is our setter for updating request details
+//   // respoknse is our getter for the axios results
+//   return [response, request];
+// };
+
+
 const useAjax = (url) => {
 
   const [list, setList] = useState([]);
@@ -35,7 +54,7 @@ const useAjax = (url) => {
     }
   };
 
-  useEffect(_axiosGetItems, []);
+  // useEffect(_axiosGetItems, []);
 
   const _toggleComplete = async id => {
     const item = list.filter(i => i._id === id)[0] || {};
@@ -50,9 +69,9 @@ const useAjax = (url) => {
         },
       });
 
-      setList(list.map(listItem => listItem._id === item._id ? request : listItem));
-      // _axiosGetItems();
-      // return request;
+      // setList(list.map(listItem => listItem._id === item._id ? request : listItem));
+      _axiosGetItems();
+      return request;
     }
   };
 

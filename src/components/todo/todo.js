@@ -10,9 +10,21 @@ const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 export default function ToDo() {
 
-  const [list, setList] = useState([]);
+  // const [response, request] = useAjax();
+  // const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   request({ url: 'https://api-js401.herokuapp.com/api/v1/todo', method: 'GET' });
+  // }, [request]);
+
+  // useEffect(() => {
+  //   request({ url: 'https://api-js401.herokuapp.com/api/v1/todo', method: 'POST' });
+  //   setData(response);
+  // }, [response, request, setData]);
+
   // const [list, _axiosAddItem, _axiosGetItems, _toggleComplete] = useAjax(todoAPI);
   // const [_axiosAddItem, _axiosGetItems, _toggleComplete] = useAjax(todoAPI);
+  const [list, setList] = useState([]);
 
   useEffect(() => {
     document.title = `To Do List: (${list.filter(item => !item.complete).length})`;
@@ -41,7 +53,7 @@ export default function ToDo() {
 
   const _toggleComplete = async id => {
     const item = list.filter(i => i._id === id)[0] || {};
-    
+
     if (item._id) {
       const url = `${todoAPI}/${id}`;
       const request = await axios({
@@ -56,7 +68,7 @@ export default function ToDo() {
       return request;
     }
   };
-  
+
   const _axiosDeleteItem = async id => {
     const url = `${todoAPI}/${id}`;
     let request = await axios({
@@ -66,9 +78,9 @@ export default function ToDo() {
     _axiosGetItems();
     return request;
   };
-  
+
   useEffect(_axiosGetItems, []);
-  
+
   return (
     <>
       <header>
