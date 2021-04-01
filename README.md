@@ -1,8 +1,8 @@
-# LAB - Hooks API
+# LAB - Context API
 
 ## Author: Jason Quaglia
 
-[Link to PR](https://github.com/jquaglia/todo/pull/3)
+[Link to PR](https://github.com/jquaglia/todo/pull/5)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f102994b-c7b5-4898-9d7e-cb9ced9e0bed/deploy-status)](https://app.netlify.com/sites/vigorous-poitras-0340ff/deploys)
 
@@ -33,6 +33,18 @@ In Phase 2, we’re going to connect the To Do Manager to a deployed API, backed
 - As a user, I would like my To Do Items to be permanently stored so that I can re-access them at any time, using any device
 
 Note that the display of each To Do item has changed slightly.
+
+## todo Phase 3:
+
+In Phase 3, we’d like to extend the functionality of the application by potentially allowing users to set a few configuration options to change how the application behaves. The user stories from Phases 1 and 2 remain unchanged. For this phase, we are now adding the following new user stories.
+
+- As a user, I would like to see my To Do List Items a few at a time so that I don’t have to wade through them all
+
+- As a user, I would like my default view to only be “Incomplete” Items so that I can quickly determine what I have to do.
+
+- As a user, I would like my list sorted by difficulty so that I can more easily prioritize
+
+- As a user, I would like the option to change my default preferences with regards to how many Items I see per page, which items are filtered, and how they are sorted
 
 ## Collaborators
 

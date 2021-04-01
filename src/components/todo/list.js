@@ -21,6 +21,7 @@ export default function TodoList(props) {
   const filteredList = sortedList.filter(item => !item.complete);
   const filteredTrueList = sortedList.filter(item => item.complete);
   const oneListToRuleThemAll = [...filteredList, ...filteredTrueList];
+  
   const numberOfPages = Math.ceil(oneListToRuleThemAll.length / context.itemsPerPage);
   
   const indexOfLastPost = currentPage * context.itemsPerPage;
@@ -33,7 +34,7 @@ export default function TodoList(props) {
   const active = currentPage;
   for (let number = 1; number <= numberOfPages; number++) {
     pageNumbers.push(
-      <Pagination.Item key={number} active={number === active} href="!#" onClick={() => paginate(number)}>
+      <Pagination.Item key={number} active={number === active} onClick={() => paginate(number)}>
         {number}
       </Pagination.Item>,
     );

@@ -17,6 +17,7 @@ export default function ToDo() {
   // const context = useContext(SettingsContext);
 
   const [response, request] = useAjax();
+  // eslint-disable-next-line
   const [data, setData] = useState();
   const [list, setList] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
@@ -78,18 +79,18 @@ export default function ToDo() {
     request(options);
   };
 
-  const _getItems = item => {
-    const options = {
-      url: todoAPI,
-      method: 'get',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      data: item,
-    };
-    // const results = request.data.results;
-    // setList(results);
-    request(options);
-  };
+  // const _getItems = item => {
+  //   const options = {
+  //     url: todoAPI,
+  //     method: 'get',
+  //     mode: 'cors',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     data: item,
+  //   };
+  //   // const results = request.data.results;
+  //   // setList(results);
+  //   request(options);
+  // };
 
   const _axiosGetItems = async item => {
     const request = await axios({
