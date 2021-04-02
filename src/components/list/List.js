@@ -1,12 +1,12 @@
-import React from 'react';
-import { Toast, Badge, Pagination } from 'react-bootstrap';
-import { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { Toast, Badge } from 'react-bootstrap';
 import { SettingsContext } from '../../context/settings/Settings.js';
+import PaginationStation from '../pagination/Pagination.js';
+
 
 export default function TodoList(props) {
 
   const context = useContext(SettingsContext);
-  const [currentPage, setCurrentPage] = useState(context.startingPage);
 
   const styles = {
     pill: { cursor: 'pointer' },
@@ -21,24 +21,16 @@ export default function TodoList(props) {
   const filteredList = sortedList.filter(item => !item.complete);
   const filteredTrueList = sortedList.filter(item => item.complete);
   const oneListToRuleThemAll = [...filteredList, ...filteredTrueList];
-  
+
   const numberOfPages = Math.ceil(oneListToRuleThemAll.length / context.itemsPerPage);
-  
-  const indexOfLastPost = currentPage * context.itemsPerPage;
+
+  const indexOfLastPost = context.currentPage * context.itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - context.itemsPerPage;
   const currentPosts = oneListToRuleThemAll.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = pageNumber => context.updateCurrentPage(pageNumber);
 
-  const pageNumbers = [];
-  const active = currentPage;
-  for (let number = 1; number <= numberOfPages; number++) {
-    pageNumbers.push(
-      <Pagination.Item key={number} active={number === active} onClick={() => paginate(number)}>
-        {number}
-      </Pagination.Item>,
-    );
-  }
+  const active = context.currentPage;
 
   return (
     <>
@@ -56,14 +48,18 @@ export default function TodoList(props) {
             <strong className="mr-auto">{item.assignee}</strong>
           </Toast.Header>
           <Toast.Body>
-            {item.text}
+            <p>
+              {item.text}
+            </p>
             difficulty:{item.difficulty}
           </Toast.Body>
         </Toast>
       ))}
-      <Pagination>
-        {pageNumbers}
-      </Pagination>
+      <PaginationStation
+        active={active}
+        numberOfPages={numberOfPages}
+        paginate={paginate}
+      />
     </>
   );
 }
