@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const SettingsContext = React.createContext();
 
 function SettingsProvider(props) {
 
+  let [currentPage, setCurrentPage] = useState(1);
+  let [displayCompleted, setDisplayCompleted] = useState(true);
+  let [itemsPerPage, setItemsPerPage] = useState(5);
+  let [sortBy, setSortBy] = useState('difficulty');
+
   const state = {
-    displayCompletedItems: true,
-    itemsPerPage: 5,
-    sortBy: 'not completed',
-    startingPage: 1,
+    currentPage,
+    displayCompleted,
+    itemsPerPage,
+    sortBy,
+    updateSort: setSortBy,
+    updateItemsPerPage: setItemsPerPage,
+    updateDisplayCompleted: setDisplayCompleted,
+    updateCurrentPage: setCurrentPage,
   };
 
   return (
