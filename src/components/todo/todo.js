@@ -4,7 +4,8 @@ import TodoList from './list.js';
 import axios from 'axios';
 import useAjax from '../../hooks/useAjax.js';
 import SettingsProvider from '../../context/settings/Settings.js';
-import { Navbar } from 'react-bootstrap';
+// import { Navbar } from 'react-bootstrap';
+import Header from '../header/Header.js';
 // import { SettingsContext } from '../../context/settings/Settings.js';
 // import { useContext } from 'react';
 
@@ -107,9 +108,10 @@ export default function ToDo() {
   return (
     <>
       <SettingsProvider>
-        <header>
+        {/* <header>
           <Navbar style={{ color: 'white' }} bg='primary' variant='dark' className='headerOne'>Home</Navbar>
-        </header>
+        </header> */}
+        <Header />
         <main>
           <h2>
             To Do List Manager ({list.filter(item => !item.complete).length})
