@@ -1,34 +1,15 @@
-import { Navbar, InputGroup, FormControl, Form, Button } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import Login from '../auth/Login.js';
 
-export default function Header(props) {
+export default function Header() {
+
   return (
     <header>
       <Navbar bg="primary justify-content-between" variant="dark">
-        {/* <Container> */}
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
-        {/* </Container> */}
-        {/* <Container> */}
-        <Form inline>
-          <InputGroup>
-            <FormControl
-              placeholder="Username"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup>
-          <InputGroup>
-            {/* </Form>
-            <Form inline> */}
-            <FormControl type="text" placeholder="Password" className=" mr-sm-2" />
-          </InputGroup>
-          <InputGroup>
-            <Button type="submit" variant="dark">Login</Button>
-          </InputGroup>
-          <InputGroup>
-            <Button className="logout" type="submit" variant="danger">Log Out</Button>
-          </InputGroup>
-        </Form>
-        {/* </Container> */}
+        <Navbar.Brand href="#home">
+          Home
+        </Navbar.Brand>
+        <Login />
       </Navbar>
     </header>
   );

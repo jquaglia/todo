@@ -12,6 +12,7 @@ function SettingsProvider(props) {
   };
 
   return (
+    // eslint-disable-next-line
     <SettingsContext.Provider value={state}>
       {props.children}
     </SettingsContext.Provider>
