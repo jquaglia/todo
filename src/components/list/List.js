@@ -1,7 +1,8 @@
-import React from 'react';
-import { Toast, Badge, Pagination } from 'react-bootstrap';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+import { Toast, Badge } from 'react-bootstrap';
 import { SettingsContext } from '../../context/settings/Settings.js';
+import PaginationStation from '../pagination/Pagination.js';
+
 
 export default function TodoList(props) {
 
@@ -29,15 +30,7 @@ export default function TodoList(props) {
 
   const paginate = pageNumber => context.updateCurrentPage(pageNumber);
 
-  const pageNumbers = [];
   const active = context.currentPage;
-  for (let number = 1; number <= numberOfPages; number++) {
-    pageNumbers.push(
-      <Pagination.Item key={number} active={number === active} onClick={() => paginate(number)}>
-        {number}
-      </Pagination.Item>,
-    );
-  }
 
   return (
     <>
@@ -62,9 +55,11 @@ export default function TodoList(props) {
           </Toast.Body>
         </Toast>
       ))}
-      <Pagination>
-        {pageNumbers}
-      </Pagination>
+      <PaginationStation
+        active={active}
+        numberOfPages={numberOfPages}
+        paginate={paginate}
+      />
     </>
   );
 }

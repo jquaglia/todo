@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <Navbar bg="primary justify-content-between" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
           Home
         </Navbar.Brand>
         <Login />
