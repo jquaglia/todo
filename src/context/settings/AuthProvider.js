@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import jwt from 'jsonwebtoken';
 import useAjax from '../../hooks/useAjax.js';
 import cookie from 'react-cookies';
@@ -13,6 +13,15 @@ function AuthProvider(props) {
   let [token, setToken] = useState('');
   let [response, request] = useAjax();
 
+  const _isValidUser = useCallback(token => {
+    const validUser = jwt.decode(token);
+    if (validUser) {
+      if (validUser.username === user.username) return true;
+    } else {
+      return false;
+    }
+  }, [user]);
+
   useEffect(() => {
     // console.log(response);
     if (_isValidUser(response.token)) {
@@ -20,7 +29,7 @@ function AuthProvider(props) {
       setToken(response.token);
       cookie.save('auth', response.token);
     }
-  }, [response]);
+  }, [response, _isValidUser]);
 
   useEffect(() => {
     let token = cookie.load('auth');
@@ -29,14 +38,6 @@ function AuthProvider(props) {
     }
   }, []);
 
-  const _isValidUser = (token) => {
-    const validUser = jwt.decode(token);
-    if (validUser) {
-      if (validUser.username === user.username) return true;
-    } else {
-      return false;
-    }
-  };
 
   const login = (username, password) => {
     // basic authentication header options

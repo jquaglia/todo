@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import Header from './components/header/Header.js';
 import Auth from './components/auth/Auth.js';
@@ -52,7 +52,7 @@ export default function App() {
     request(options);
   };
 
-  const _toggleComplete = id => {
+  const _toggleComplete = useCallback(id => {
     const item = list.filter(i => i._id === id)[0] || {};
 
     if (item._id) {
@@ -68,9 +68,9 @@ export default function App() {
       };
       request(options);
     }
-  };
+  }, [list, request]);
 
-  const _deleteItem = id => {
+  const _deleteItem = useCallback(id => {
     const url = `${todoAPI}/${id}`;
     const options = {
       url: url,
@@ -79,7 +79,7 @@ export default function App() {
       headers: { 'Content-Type': 'application/json' },
     };
     request(options);
-  };
+  }, [request]);
 
   // const _getItems = item => {
   //   const options = {
@@ -104,7 +104,7 @@ export default function App() {
     setList(results);
   };
 
-  useEffect(_axiosGetItems, [_toggleComplete, _deleteItem]);
+  useEffect(() => { _axiosGetItems() }, [_toggleComplete, _deleteItem]);
 
   return (
     <>
